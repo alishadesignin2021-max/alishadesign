@@ -49,7 +49,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Scroll Reveal Animations (Intersection Observer)
+    // 4. Gallery Dynamic Loading
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (galleryGrid) {
+        galleryGrid.innerHTML = ''; // clear current items if any
+        
+        const galleryImages = [
+            "WhatsApp Image 2026-03-31 at 19.41.23.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.24.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.26.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.27.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.33.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.34 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.34 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.34.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.35 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.35.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.36 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.36 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.36.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.37 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.37 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.37.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.39.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.40 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.40 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.40 (3).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.40.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.42 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.42.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.43 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.43.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.44 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.44.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.46 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.46.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.47 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.47 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.47.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.48 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.48 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.48.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.49.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.52.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.53.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.54 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.54.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.55 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.55.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.56 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.56.jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.57 (1).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.57 (2).jpeg",
+            "WhatsApp Image 2026-03-31 at 19.41.57.jpeg"
+        ];
+        
+        galleryImages.forEach((image, index) => {
+            const delay = (index % 5) * 100;
+            const itemHtml = `
+                <div class="gallery-item reveal" style="transition-delay: ${delay}ms;">
+                    <img src="gallery/${image}" alt="Alisha Design Project" loading="lazy">
+                    <div class="gallery-overlay"></div>
+                </div>
+            `;
+            galleryGrid.insertAdjacentHTML('beforeend', itemHtml);
+        });
+    }
+
+    // 5. Scroll Reveal Animations (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
 
     const revealOptions = {
