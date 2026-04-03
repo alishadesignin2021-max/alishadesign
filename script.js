@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const delay = (index % 5) * 100;
             const itemHtml = `
                 <div class="gallery-item reveal" style="transition-delay: ${delay}ms;">
-                    <img src="gallery/${image}" alt="Alisha Design Project" loading="lazy">
+                    <img src="gallery/${image}" alt="Alisha Design Interior Project ${index + 1} - Vasai Virar" loading="lazy">
                     <div class="gallery-overlay"></div>
                 </div>
             `;
